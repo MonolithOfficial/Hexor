@@ -8,17 +8,21 @@
     <title>HEXOR</title>
 </head>
 <body>
-    <canvas id="canvas" width="1000px" height="500px">
+    <main id="pageHolder">
+        <canvas id="canvas" width="0" height="0">
 
-    </canvas>
-    <p><label for="file" style="cursor: pointer;">Upload Image</label></p>
-    <input type="file"  accept="image/*" name="image" id="file" style="display: none;" onchange="loadFile(event)">
-
-    <img id="output" width="200" />	
-
-    <div id="colors">
-        
-    </div>
+        </canvas>
+        <p id="uploadFileLabel"><label for="file" style="cursor: pointer;">Upload Image</label></p>
+        <input type="file"  accept="image/*" name="image" id="file" style="display: none;" onchange="loadFile(event)">
+    
+        <div class="uploadedImageHolder">
+            <img id="uploadedImage"/>	
+        </div>
+    
+        <div id="colors">
+            
+        </div>
+    </main>
     <script src="./script.js"></script>
 </body>
 </html>

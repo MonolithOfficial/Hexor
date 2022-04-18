@@ -1,5 +1,5 @@
 var loadFile = function(){
-    var imageTag = document.getElementById('output');
+    var imageTag = document.getElementById('uploadedImage');
     var src = URL.createObjectURL(event.target.files[0]);
     // console.log(event.target.files[0].width)
     imageTag.src = src;
@@ -7,6 +7,7 @@ var loadFile = function(){
 }
 
 var loadImageOntoCanvas = function(src){
+    var pageHolder = document.getElementById('pageHolder');
     var ctx = document.getElementById('canvas');
     var colorsHolder = document.getElementById('colors');
     var canvas = ctx.getContext('2d');
@@ -32,12 +33,14 @@ var loadImageOntoCanvas = function(src){
         for (let i = 0; i < 5; i++){
             var rgba = arrayOfPixelsRGBA[i];
             var coloredDiv = document.createElement('div');
-            coloredDiv.style.width = 300 + "px";
-            coloredDiv.style.height = 300 + "px";
+            coloredDiv.style.width = 100 + "px";
+            coloredDiv.style.height = 100 + "px";
             coloredDiv.style.backgroundColor  = rgba;
 
             colorsHolder.appendChild(coloredDiv);
         }
+
+        pageHolder.removeChild(ctx);
     };
 
     img1.src = src;

@@ -1,4 +1,42 @@
+body, html {
+    padding: 0;
+    margin: 0;
+}
+
+h1, h2, h3, h4, h5, p {
+    color: yellow;
+}
+
+body {
+    background-color: black;
+}
+
+#uploadFileLabel {
+    padding: 10px 20px;
+    border: 1px solid yellow;
+    max-width: 100px;
+    transition: 0.5s;
+}
+
+#uploadFileLabel:hover {
+    background-color: yellow;
+    color: black;
+}
+
+.uploadedImageHolder {
+    width: 50%;
+    max-width: 400px;
+    border: 1px solid yellow;
+}
+
+#uploadedImage {
+    max-width: 100%;
+}
+
 #colors {
     display: flex;
     flex-direction: row;
+    border: 1px solid yellow;
+    width: fit-content;
+    margin-top: 2rem;
 }
