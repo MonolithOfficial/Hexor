@@ -1,13 +1,19 @@
 var loadFile = function(){
     var imageTag = document.getElementById('uploadedImage');
     var src = URL.createObjectURL(event.target.files[0]);
-    // console.log(event.target.files[0].width)
     imageTag.src = src;
+    imageTag.parentElement.style.border = "1px solid yellow";
     loadImageOntoCanvas(src);
 }
 
 var loadImageOntoCanvas = function(src){
+    var canvasGenerated = document.createElement('canvas');
+    canvasGenerated.id = 'canvas';
+    canvasGenerated.width = 0;
+    canvasGenerated.height = 0;
+
     var pageHolder = document.getElementById('pageHolder');
+    pageHolder.appendChild(canvasGenerated);
     var ctx = document.getElementById('canvas');
     var colorsHolder = document.getElementById('colors');
     var canvas = ctx.getContext('2d');
@@ -15,6 +21,7 @@ var loadImageOntoCanvas = function(src){
     var imagePixelData;
 
     img1.onload = function () {
+        colorsHolder.innerHTML = "";
         ctx.height = img1.height;
         ctx.width = img1.width;
         canvas.drawImage(img1, 0, 0);
@@ -39,6 +46,7 @@ var loadImageOntoCanvas = function(src){
 
             colorsHolder.appendChild(coloredDiv);
         }
+        colorsHolder.style.border = "1px solid yellow";
 
         pageHolder.removeChild(ctx);
     };
