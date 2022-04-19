@@ -6,6 +6,8 @@ var loadFile = function(){
     loadImageOntoCanvas(src);
 }
 
+test("rgba(0, 0, 0, 0.74)");
+
 var loadImageOntoCanvas = function(src){
     var canvasGenerated = document.createElement('canvas');
     canvasGenerated.id = 'canvas';
@@ -43,8 +45,16 @@ var loadImageOntoCanvas = function(src){
             coloredDiv.style.width = 100 + "px";
             coloredDiv.style.height = 100 + "px";
             coloredDiv.style.backgroundColor  = rgba;
+            coloredDiv.style.display = 'flex';
+            coloredDiv.style.justifyContent = 'center';
+            coloredDiv.style.alignItems = 'center';
 
             colorsHolder.appendChild(coloredDiv);
+
+            var hexCodeEl = document.createElement('p');
+            hexCodeEl.style.backgroundColor = "rgba(0, 0, 0, 0.7)";
+            hexCodeEl.innerText = `#${rgba2hex(rgba)}`;
+            coloredDiv.appendChild(hexCodeEl);
         }
         colorsHolder.style.border = "1px solid yellow";
 
@@ -53,6 +63,30 @@ var loadImageOntoCanvas = function(src){
 
     img1.src = src;
 }
+
+function rgba2hex(orig) {
+    var a, isPercent,
+      rgb = orig.replace(/\s/g, '').match(/^rgba?\((\d+),(\d+),(\d+),?([^,\s)]+)?/i),
+      alpha = (rgb && rgb[4] || "").trim(),
+      hex = rgb ?
+      (rgb[1] | 1 << 8).toString(16).slice(1) +
+      (rgb[2] | 1 << 8).toString(16).slice(1) +
+      (rgb[3] | 1 << 8).toString(16).slice(1) : orig;
+  
+    if (alpha !== "") {
+      a = alpha;
+    } else {
+      a = 01;
+    }
+    a = ((a * 255) | 1 << 8).toString(16).slice(1);
+    hex = hex + a;
+  
+    return hex;
+  }
+  
+  function test(colorcode) {
+    console.log(colorcode, rgba2hex(colorcode));
+  }
 
 function checkIfInArray(array, element){
     for (let i = 0; i < array.length; i++){
